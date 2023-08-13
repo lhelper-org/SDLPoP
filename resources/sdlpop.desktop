@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SDLPop
+Exec=prince
+Icon=sdlpop
+Comment=Play a SDL port of the DOS game PoP
+Terminal=false
+Categories=Game;
+
