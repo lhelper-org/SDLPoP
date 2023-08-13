@@ -39,28 +39,25 @@ download_appimage_apprun() {
 }
 
 build_application() {
-  pushd src
-  make clean
-  make
-  popd
-  strip prince
+  rm -fr .build-appimage
+  meson setup --buildtype=release --prefix=/usr .build-appimage
+  meson compile -C .build-appimage
 }
 
 generate_appimage() {
   local app_name="$1"
 
-  if [ -e "$app_name.AppDir" ]; then
-    rm -rf "$app_name.AppDir"
+  if [ -e "${app_name}.AppDir" ]; then
+    rm -rf "${app_name}.AppDir"
   fi
-  mkdir "$app_name.AppDir"
+  mkdir "${app_name}.AppDir"
 
-  echo "Creating $app_name.AppDir..."
+  echo "Creating ${app_name}.AppDir..."
 
-  mkdir -p "${app_name}.AppDir/usr/bin"
-  cp -r prince "${app_name}.AppDir/usr/bin"
-  cp -r data "${app_name}.AppDir/usr"
-  cp AppRun "$app_name.AppDir/"
-  strip "$app_name.AppDir/AppRun"
+  DESTDIR="$(realpath ${app_name}.AppDir)" meson install --strip -C .build-appimage
+
+  cp AppRun "${app_name}.AppDir/"
+  strip "${app_name}.AppDir/AppRun"
 
   cp resources/sdlpop.desktop "${app_name}.AppDir/${app_name}.desktop"
   cp resources/sdlpop-icon.png "${app_name}.AppDir/sdlpop.png"
