@@ -1,4 +1,4 @@
-project('SDLPoP', 'c', version : '1.0', default_options : ['c_std=gnu99'])
+project('SDLPoP', 'c', version : '1.23', default_options : ['c_std=gnu99'])
 
 cc = meson.get_compiler('c')
 
