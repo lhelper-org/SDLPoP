@@ -3,4 +3,4 @@ CXX="${CXX:-g++}"
 
 BUILD_TYPE="Release"
 
-packages=(libpng16 samplerate "sdl2 -loadso -render -opengl -haptic -joystick -audio" sdl2-image)
+packages=(zlib libpng16 samplerate "sdl2 -loadso -render -opengl -haptic -joystick -audio" sdl2-image)
