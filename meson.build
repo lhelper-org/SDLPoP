@@ -16,8 +16,15 @@ endif
 subdir('src')
 
 if host_machine.system() == 'darwin'
+    conf_data = configuration_data({ 'version': meson.project_version() })
+    configure_file(
+        input : 'resources/Info.plist.in',
+        output : 'Info.plist',
+        configuration : conf_data,
+        install : true,
+        install_dir : 'Contents'
+    )
     install_data('src/icon.icns', install_dir : 'Contents/Resources')
-    install_data('Info.plist', install_dir : 'Contents')
     install_subdir('data', install_dir : get_option('bindir'))
 else
     install_subdir('data', install_dir : get_option('prefix'))
