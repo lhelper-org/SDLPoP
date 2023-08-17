@@ -15,4 +15,10 @@ endif
 
 subdir('src')
 
-install_subdir('data', install_dir : get_option('prefix'))
+if host_machine.system() == 'darwin'
+    install_data('src/icon.icns', install_dir : 'Contents/Resources')
+    install_data('Info.plist', install_dir : 'Contents')
+    install_subdir('data', install_dir : get_option('bindir'))
+else
+    install_subdir('data', install_dir : get_option('prefix'))
+endif
