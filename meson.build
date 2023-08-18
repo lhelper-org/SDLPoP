@@ -3,6 +3,7 @@ project('SDLPoP', 'c', version : '1.23', default_options : ['c_std=gnu99'])
 cc = meson.get_compiler('c')
 
 sdl2_dep = dependency('sdl2', method: 'config-tool')
+png_dep = dependency('libpng')
 sdl2_image_dep = dependency('SDL2_image')
 threads_dep = dependency('threads')
 m_dep = cc.find_library('m', required: false)

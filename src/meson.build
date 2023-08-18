@@ -5,7 +5,7 @@ source_files = files(
 )
 
 executable('prince', source_files,
-           dependencies : [sdl2_dep, sdl2_image_dep, m_dep, dl_dep, threads_dep],
+           dependencies : [sdl2_dep, sdl2_image_dep, m_dep, dl_dep, png_dep, threads_dep],
            link_args : sdlpop_link_args,
            install : true)
 
