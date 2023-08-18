@@ -60,7 +60,7 @@ generate_appimage() {
   strip "${app_name}.AppDir/AppRun"
 
   cp resources/sdlpop.desktop "${app_name}.AppDir/${app_name}.desktop"
-  cp resources/sdlpop-icon.png "${app_name}.AppDir/sdlpop.png"
+  cp data/icon.png "${app_name}.AppDir/sdlpop.png"
 
   echo "Generating AppImage..."
 
