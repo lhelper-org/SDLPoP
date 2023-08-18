@@ -181,18 +181,6 @@ int access_UTF8(const char* filename_UTF8, int mode) {
 	return result;
 }
 
-int stat_UTF8(const char *filename_UTF8, struct stat *_Stat) {
-	WCHAR* filename_UTF16 = WIN_UTF8ToString(filename_UTF8);
-#ifdef _MSC_VER
-	int result = _wstat(filename_UTF16, _Stat);
-#else
-	// There is a _wstat() function on Dev-C++ as well, but it expects the second argument to be a different type than stat().
-	int result = wstat(filename_UTF16, _Stat);
-#endif
-	SDL_free(filename_UTF16);
-	return result;
-}
-
 #endif //_WIN32
 
 // OS abstraction for listing directory contents

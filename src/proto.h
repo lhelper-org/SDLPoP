@@ -540,10 +540,6 @@ int access_UTF8(const char* filename_UTF8, int mode);
 #endif
 #define access access_UTF8
 
-int stat_UTF8(const char *filename_UTF8, struct stat *_Stat);
-// We define a function-like macro, because `stat` is also the name of the type, and we don't want to redefine that.
-#define stat(filename_UTF8, _Stat) stat_UTF8(filename_UTF8, _Stat)
-
 #endif //_WIN32
 
 directory_listing_type* create_directory_listing_and_find_first_file(const char* directory, const char* extension);
