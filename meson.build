@@ -17,7 +17,10 @@ endif
 subdir('src')
 
 if host_machine.system() == 'darwin'
-    conf_data = configuration_data({ 'version': meson.project_version() })
+    conf_data = configuration_data({
+        'version': meson.project_version(),
+        'macos_target': get_option('macos_target'),
+    })
     configure_file(
         input : 'resources/Info.plist.in',
         output : 'Info.plist',

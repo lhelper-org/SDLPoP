@@ -1,0 +1,1 @@
+option('macos_target', type : 'string', value : '10.11', description : 'Target version for macOS')
